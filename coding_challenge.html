@@ -7,6 +7,7 @@
 
 <body>
 	Enter a valid URL here: 
+	updated
 	<input type="url" id="address">
 	<input type="button" value="Send" onClick="getData">
 </body>
@@ -15,8 +16,12 @@
 <script>
 function getData(){
 	var URL=document.getElementById("address").value;
+	var jsontext;
 	if(isValidURL(URL)){
-		jsontext=$.getJSON(URL);
+		$(document).ready(function(){
+			jsontext = $.getJSON(URL);
+		});
+		
 		alert(jsontext);
 	}
 	else{
