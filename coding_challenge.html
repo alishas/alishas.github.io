@@ -23,7 +23,7 @@ function getData(){
 		$(document).ready(function(){
 			$.getJSON(URL,function(result){
       			$.each(result, function(i, field){
-       				listitems=JSON.stringify(field) + " ";
+       				listitems=JSON.stringify(field);
       			});
  	 		});
     	});
