@@ -18,12 +18,12 @@
 <script>
 function getData(){
 	var URL=document.getElementById("address").value;
-	var listitems;
+	var listitems="";
 	if(isValidURL(URL)){
 		$(document).ready(function(){
 			$.getJSON(URL,function(result){
       			$.each(result, function(i, field){
-       				listitems.append(JSON.stringify(field) + " ");
+       				listitems=JSON.stringify(field) + " ";
       			});
  	 		});
     	});
