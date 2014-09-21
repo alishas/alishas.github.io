@@ -16,16 +16,16 @@
 <script>
 function getData(){
 	var URL=document.getElementById("address").value;
-	//var jsontext;
+	var jsontext;
 	if(isValidURL(URL)){
-		// $(document).ready(function(){
-		// 	jsontext = $.getJSON(URL);
-		// });
-		var jsontext = '{"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]}';
-		var contact = JSON.parse(jsontext);
-		alert(contact.surname + ", " + contact.firstname);
+		$(document).ready(function(){
+			jsontext = $.getJSON(URL);
+		});
+		// var jsontext = '{"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]}';
+		// var contact = JSON.parse(jsontext);
+		// alert(contact.surname + ", " + contact.firstname);
 		
-		//alert(jsontext);
+		alert(jsontext);
 	}
 	else{
 		alert("Please enter a valid URL.")
