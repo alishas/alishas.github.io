@@ -2,6 +2,7 @@
 <html>
 <title>Coding Challenge</title>
 <head>
+<script src="../jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -15,10 +16,7 @@
 function getData(){
 	var URL=document.getElementById("address").value;
 	if(isValidURL(URL)){
-		xmlhttp=new XMLHttpRequest();
-		xmlhttp.open("GET", URL,false);
-		xmlhttp.send();
-		jsontext=xmlhttp.responseXML;
+		jsontext=$.getJSON(URL);
 		alert(jsontext);
 	}
 	else{
