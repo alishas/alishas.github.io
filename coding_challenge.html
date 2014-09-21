@@ -32,7 +32,7 @@ function getData(){
 
 	listitems = '{"items": [{ "description": "Answer the Doodle Poll","done": false },{ "description": "Set up my github.io user site","done": false },{ "description": "Have a great weekend","done": true }]}';
 		var list = JSON.parse(listitems);
-		alert(list.description + ", " + list.done);
+		alert(list.items.description + ", " + list.items.done);
 		
 		//alert(JSON.stringify(jsontext));
 	}
