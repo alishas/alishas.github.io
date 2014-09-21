@@ -23,7 +23,7 @@ function getData(){
 		$(document).ready(function(){
 			$.getJSON(URL,function(result){
       			$.each(result, function(i, field){
-       				$("div").append(JSON.stringify(field) + " ");
+       				alert(JSON.stringify(field) + " ");
       			});
  	 		});
     	});
@@ -33,7 +33,7 @@ function getData(){
 		// var contact = JSON.parse(jsontext);
 		// alert(contact.surname + ", " + contact.firstname);
 		
-		alert(JSON.stringify(jsontext));
+		//alert(JSON.stringify(jsontext));
 	}
 	else{
 		alert("Please enter a valid URL.")
