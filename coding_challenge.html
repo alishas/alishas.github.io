@@ -1,8 +1,18 @@
 <!DOCTYPE html>
-<title>Alisha Saxena's Profile</title>
+<html>
+<title>Coding Challenge</title>
 <head>
 </head>
 
 <body>
-Hi
+	Enter a valid URL here: 
+	<input type="url" id="address">
+	<input type="button" value="Send" onClick="getData()">
 </body>
+</html>
+
+<script>
+function getData(){
+	var URL=document.getElementById("address").value;
+}
+</script>
