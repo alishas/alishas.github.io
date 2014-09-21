@@ -7,7 +7,7 @@
 <body>
 	Enter a valid URL here: 
 	<input type="url" id="address">
-	<input type="button" value="Send" onClick="getData()">
+	<input type="button" value="Send" onClick="getData">
 </body>
 </html>
 
@@ -17,7 +17,7 @@ function getData(){
 	if(isValidURL(URL)){
 		xmlhttp=new XMLHttpRequest();
 		xmlhttp.open("GET", URL,false);
-		xmlhttp.send()l
+		xmlhttp.send();
 		jsontext=xmlhttp.responseXML;
 		alert(jsontext);
 	}
