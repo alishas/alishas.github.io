@@ -11,7 +11,7 @@
 	<input type="url" id="address">
 	<input type="button" value="Send" onClick="getData()">
 
-	<div></div>
+	<div id="json"></div>
 </body>
 </html>
 
@@ -20,17 +20,27 @@ function getData(){
 	var URL=document.getElementById("address").value;
 	var listitems="";
 	if(isValidURL(URL)){
-		$(document).ready(function(){
-			$.getJSON(URL,function(result){
-      			$.each(result, function(i, field){
-       				listitems=JSON.stringify(field);
-       				$("div").append(listitems);
-      			});
- 	 		});
-    	});
+		// $(document).ready(function(){
+		// 	$.getJSON(URL,function(result){
+  //     			$.each(result, function(i, field){
+  //      				listitems=JSON.stringify(field);
+  //      				$("div").append(listitems);
+  //     			});
+ 	//  		});
+  //   	});
 	
 
-		// var jsontext = '{"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]}';
+		var listitems = '{
+   "items": [
+       { "description": "Answer the Doodle Poll",
+         "done": false },
+       { "description": "Set up my github.io user site",
+         "done": false },
+       { "description": "Have a great weekend",
+         "done": true }
+   ]
+}'
+;
 		var list = JSON.parse(listitems);
 		alert(list.description + ", " + list.done);
 		
