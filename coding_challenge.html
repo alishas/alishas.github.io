@@ -15,11 +15,15 @@
 function getData(){
 	var URL=document.getElementById("address").value;
 	if(isValidURL(URL)){
-		alert(URL);
+		xmlhttp=new XMLHttpRequest();
+		xmlhttp.open("GET", URL,false);
+		xmlhttp.send()l
+		jsontext=xmlhttp.responseXML;
+		alert(jsontext);
 	}
 	else{
 		alert("Please enter a valid URL.")
-		documet.getElementById("address").value='';
+		documet.getElementById("address").value="";
 	}
 	
 }
