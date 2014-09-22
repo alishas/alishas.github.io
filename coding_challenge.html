@@ -24,19 +24,18 @@ function getData(){
 			$.getJSON(URL,function(result){
       			$.each(result, function(i, field){
        				listitems=JSON.stringify(field);
-       				alert(listitems);
+       				//alert(listitems);
        				var list=listitems.substring(listitems.indexOf("[")+1, listitems.indexOf("]"));
        				var array=list.split("},");
-       				var html=JSON.parse(array[0]+"}");
-       				alert(html.description+", "+html.done);
+       				for(var i =0; i<array.length;i++){
+       					var html=JSON.parse(array[i]+"}");
+       					$("div").append(html.description+", "+html.done);
+       				}
+       				
        				
       			});
  	 		});
     	});
-    	//alert(listitems);
-	
-		
-		$("div").append("<br>"+listitems);
 	// listitems = '{ "description": "Answer the Doodle Poll","done": false }';
 	// 	var list = jLinq.from(listitems)
 	// 		.startsWith("description")
