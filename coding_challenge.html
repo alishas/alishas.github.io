@@ -3,6 +3,7 @@
 <title>Coding Challenge</title>
 <head>
 <script src="../jquery-1.11.1.min.js"></script>
+<script src="jlinq.js"></script>
 </head>
 
 <body>
@@ -31,8 +32,10 @@ function getData(){
 	
 
 	listitems = '{ "description": "Answer the Doodle Poll","done": false }';
-		var list = JSON.parse(listitems);
-		alert(list.description + ", " + list.done);
+		var list = jLinq.from(listitems)
+			.startsWith("description")
+			.select();
+		alert(list + ", ");
 		
 		//alert(JSON.stringify(jsontext));
 	}
