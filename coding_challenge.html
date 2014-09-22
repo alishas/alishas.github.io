@@ -18,18 +18,19 @@
 <script>
 function getData(){
 	var URL=document.getElementById("address").value;
+	var listitems="";
 	if(isValidURL(URL)){
 		$(document).ready(function(){
 			$.getJSON(URL,function(result){
       			$.each(result, function(i, field){
-       				var listitems=JSON.stringify(field);
+       				listitems=JSON.stringify(field);
        				
       			});
  	 		});
     	});
     	alert(listitems);
 	
-		var list=listitems.substring(listitems.indexOf('[')+1, listitems.indexOf(']'));
+		var list=listitems.substring(listitems.indexOf("[")+1, listitems.indexOf("]"));
 		$("div").append("<br>"+listitems);
 	// listitems = '{ "description": "Answer the Doodle Poll","done": false }';
 	// 	var list = jLinq.from(listitems)
