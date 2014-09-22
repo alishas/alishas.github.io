@@ -25,24 +25,14 @@ function getData(){
       			$.each(result, function(i, field){
        				listitems=listitems+JSON.stringify(field);
        			});
-       				
-       			//alert(listitems);
        				var list=listitems.substring(listitems.indexOf("[")+1, listitems.indexOf("]"))+",";
        				var array=list.split("},");
        				for(var i =0; i<=array.length;i++){
-       					var html=JSON.parse(array[i]);
+       					var html=JSON.parse(array[i]+"}");
        					$("div").append(html.description+", "+html.done+"<br>");
-       				
-      			}
+      				}
  	 		});
     	});
-	// listitems = '{ "description": "Answer the Doodle Poll","done": false }';
-	// 	var list = jLinq.from(listitems)
-	// 		.startsWith("description")
-	// 		.select();
-	// 	alert(list + ", ");
-		
-		//alert(JSON.stringify(jsontext));
 	}
 	else{
 		alert("Please enter a valid URL.")
