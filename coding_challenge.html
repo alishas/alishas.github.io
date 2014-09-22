@@ -25,7 +25,7 @@ function getData(){
       			$.each(result, function(i, field){
        				listitems=JSON.stringify(field);
        				//alert(listitems);
-       				var list=listitems.substring(listitems.indexOf("[")+1, listitems.indexOf("]"));
+       				var list=listitems.substring(listitems.indexOf("[")+1, listitems.indexOf("]"))+",";
        				var array=list.split("},");
        				for(var i =0; i<=array.length;i++){
        					var html=JSON.parse(array[i]+"}");
