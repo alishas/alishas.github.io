@@ -28,7 +28,7 @@ function getData(){
        				var list=listitems.substring(listitems.indexOf("[")+1, listitems.indexOf("]"));
        				var array=list.split("},");
        				var html=JSON.parse(array[0]+"}");
-       				$("div").innerHTML=(html.description+","+html.done);
+       				alert(html.description+", "+html.done);
        				
       			});
  	 		});
