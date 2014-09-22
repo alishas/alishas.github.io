@@ -3,7 +3,6 @@
 <title>Coding Challenge</title>
 <head>
 <script src="../jquery-1.11.1.min.js"></script>
-<script src="jlinq.js"></script>
 </head>
 
 <body>
@@ -25,17 +24,18 @@ function getData(){
 			$.getJSON(URL,function(result){
       			$.each(result, function(i, field){
        				listitems=JSON.stringify(field);
-       				$("div").append("<br>"+listitems);
+       				
       			});
  	 		});
     	});
 	
-
-	listitems = '{ "description": "Answer the Doodle Poll","done": false }';
-		var list = jLinq.from(listitems)
-			.startsWith("description")
-			.select();
-		alert(list + ", ");
+		listitems=listitems.substring(listitems.indexOf('['+1, listitems.indexOf(']')));
+		$("div").append("<br>"+listitems);
+	// listitems = '{ "description": "Answer the Doodle Poll","done": false }';
+	// 	var list = jLinq.from(listitems)
+	// 		.startsWith("description")
+	// 		.select();
+	// 	alert(list + ", ");
 		
 		//alert(JSON.stringify(jsontext));
 	}
