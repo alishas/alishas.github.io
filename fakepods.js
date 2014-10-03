@@ -76,7 +76,7 @@ function newmsg() {
      		}
 		}
 		request.setRequestHeader("Content-type", "application/json");
-		var content = JSON.stringify({text:message, time:Date.now()});
+		var content = JSON.stringify({food:favFood, color:favColor, time:Date.now()});
 		request.send(content);
 	} 
 }
