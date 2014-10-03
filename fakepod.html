@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crosscloud Chat Demo</title>
+
+<script src="./fakepods.js"></script>
+
+<style>
+</style>
+
+</head>
+<body>
+    <form action="#" onsubmit="reload();return false;" >
+	<p style="float:right">Friend Lookup:<input id="podurl" type="text" size="20" value="" /><input type="submit" value="OK" /><br/>Enter a friend's name to get their information!</p>
+	</form>
+
+	<h1>Friend Data Sharing</h1>
+
+	<div id="chat" style="visibility: hidden;">
+	<hr/>
+	<h2>Public Messages:</h2>
+	<div id="out"></div>
+
+	<form action="#" onsubmit="newmsg();return false;" >
+	<p>Message:<input id="message" type="text" placeholder="Say something to the world!" size="80"/></p>
+	</form>
+	</div>
+
+</body>
+</html>
