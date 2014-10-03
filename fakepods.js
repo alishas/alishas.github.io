@@ -48,7 +48,7 @@ function handleResponse(responseText) {
 	while(out.firstChild) { out.removeChild(out.firstChild) }
 
 		var message = messages[0];
-		out.innerHTML = podURL()+"'s favorite food is: "+message.food+" and favorite color is: "+message.color+".";
+		out.innerHTML = document.getElementById("podurl").value+"'s favorite food is: "+message.food+" and favorite color is: "+message.color+".";
 	
 	// wait for 100ms then reload when there's new data.  If data
 	// comes faster than that, we don't really want it.
