@@ -66,7 +66,7 @@ function newmsg() {
 	document.getElementById("friendurl").value = "";
 	document.getElementById("favfood").value = "";
 	document.getElementById("favcolor").value = "";
-    if (favFood&&favColor$$friendUrl) {
+    if (favFood&&favColor&&friendUrl) {
      	var request = new XMLHttpRequest();
 	    request.open("POST", friendUrl);
     	request.onreadystatechange = function() {
