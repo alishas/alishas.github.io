@@ -1,6 +1,7 @@
 "use strict";
 
 var etag=null;
+var html="";
 
 function podURL() {
 	// temporary hack until we have a nice way for users to select their pod
@@ -47,8 +48,9 @@ function handleResponse(responseText) {
 	var out = document.getElementById("out")
 	for(i=0;i<messages.length;i++){
 		var message = messages[i];
-		out.append = document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".";
+		html.append = document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".<br>";
 	}
+	out.innerHTML=html;
 	
 	// wait for 100ms then reload when there's new data.  If data
 	// comes faster than that, we don't really want it.
