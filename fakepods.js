@@ -45,9 +45,10 @@ function handleResponse(responseText) {
 	
 	// not being clever, just remove and re-create the whole "out" element
 	var out = document.getElementById("out")
-	for(int i =0;i<messages.length;i++){}
+	for(int i =0;i<messages.length;i++){
 		var message = messages[i];
 		out.append = document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".";
+	}
 	
 	// wait for 100ms then reload when there's new data.  If data
 	// comes faster than that, we don't really want it.
