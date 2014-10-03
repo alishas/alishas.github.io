@@ -60,11 +60,15 @@ function handleResponse(responseText) {
 
 
 function newmsg() {
-    var message = document.getElementById("message").value;
-	document.getElementById("message").value = "";
+    var friendUrl = "http://"+document.getElementById("friendurl").value+".fakepods.com";
+    var favFood = document.getElementById("favfood").value;
+    var favColor = document.getElementById("favcolor").value;
+	document.getElementById("friendurl").value = "";
+	document.getElementById("favfood").value = "";
+	document.getElementById("favcolor").value = "";
     if (message) {
      	var request = new XMLHttpRequest();
-	    request.open("POST", podURL());
+	    request.open("POST", friendUrl);
     	request.onreadystatechange = function() {
             if (request.readyState==4 && request.status==201) {
 				// why does this always print null, even though it's not?

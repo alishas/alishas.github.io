@@ -11,21 +11,24 @@
 
 </head>
 <body>
+    <h1>Friend Data Sharing</h1>
+
     <form action="#" onsubmit="reload();return false;" >
-	<p style="float:left">Friend Lookup:<input id="podurl" type="text" size="20" value="" /><input type="submit" value="OK" /><br/>Enter a friend's username to get their information!</p>
+	<p>Friend Lookup:<input id="podurl" type="text" size="20" value="" /><input type="submit" value="OK" /><br/>Enter a friend's username to get their information!</p>
 	</form>
 
-	<h1>Friend Data Sharing</h1>
 
-	<div id="chat" style="visibility: hidden;">
+	<form action="#" onsubmit="newmsg();return false;" >
+	Create a new profile:<br>
+	<p>Username:<input id="friendurl" type="text"/></p>
+	<p>Favorite Food:<input id="favfood" type="text"/></p>
+	<p>Favorite Color:<input id="favcolor" type="text"/></p>
+	<input type="submit" value="Add Data" />
+	</form>
+	
+
 	<hr/>
 	<h2>Public Messages:</h2>
 	<div id="out"></div>
-
-	<form action="#" onsubmit="newmsg();return false;" >
-	<p>Message:<input id="message" type="text" placeholder="Say something to the world!" size="80"/></p>
-	</form>
-	</div>
-
 </body>
 </html>
