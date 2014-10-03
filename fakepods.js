@@ -48,7 +48,9 @@ function handleResponse(responseText) {
 	var out = document.getElementById("out")
 	for(i=0;i<messages.length;i++){
 		var message = messages[i];
-		html= html+document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".<br>";
+		if(message.food&&message.color){
+			html= html+document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".<br>";
+		}
 	}
 	out.innerHTML=html;
 	
