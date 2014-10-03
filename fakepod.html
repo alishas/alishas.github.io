@@ -13,11 +13,8 @@
 <body>
     <h1>Friend Data Sharing</h1>
 
-    <form action="#" onsubmit="reload();return false;" >
-	<p>Friend Lookup:<input id="podurl" type="text" size="20" value="" /><input type="submit" value="OK" /><br/>Enter a friend's username to get their information!</p>
-	</form>
 
-
+	<hr>
 	<form action="#" onsubmit="newmsg();return false;" >
 	Create a new profile:<br>
 	<p>Username:<input id="friendurl" type="text"/></p>
@@ -25,10 +22,13 @@
 	<p>Favorite Color:<input id="favcolor" type="text"/></p>
 	<input type="submit" value="Add Data" />
 	</form>
+
+
+    <form action="#" onsubmit="reload();return false;" >
+	<p>Friend Lookup:<input id="podurl" type="text" size="20" value="" /><input type="submit" value="OK" /><br/>Enter a friend's username to get their information!</p>
+	</form>
 	
 
-	<hr/>
-	<h2>Public Messages:</h2>
 	<div id="out"></div>
 </body>
 </html>

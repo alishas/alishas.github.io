@@ -30,32 +30,33 @@ function reload() {
 
 function handleResponse(responseText) {
 	var responseJSON = JSON.parse(responseText);
+	console.log(responseJSON);
+
 	etag = responseJSON._etag;
-	var all = responseJSON._members;
-	var messages = [];
-	for (var i=0; i<all.length; i++) {
-		var item = all[i];
-		// consider the 'text' property to be the essential one
-		if ('text' in item) {
-			messages.push(item)
-		}
-	}
-	messages.sort(function(a,b){return a.time-b.time});
+	console.log(etag);
+	// var all = responseJSON._members;
+	// var messages = [];
+	// for (var i=0; i<all.length; i++) {
+	// 	var item = all[i];
+	// 	// consider the 'text' property to be the essential one
+	// 	if ('text' in item) {
+	// 		messages.push(item)
+	// 	}
+	// }
+	// messages.sort(function(a,b){return a.time-b.time});
 	
-	// not being clever, just remove and re-create the whole "out" element
-	var out = document.getElementById("out")
-	while(out.firstChild) { out.removeChild(out.firstChild) }
-	for (i=0; i<messages.length; i++) {
-		var message = messages[i];
-		message.timeDate = new Date(Number(message.time))
-		var div = document.createElement("div");
-		div.innerHTML = message.timeDate.toLocaleString()+" "+message._owner+" "+message.text;
-		out.appendChild(div);
-	}
-	document.getElementById("chat").style.visibility = "visible"
+	// // not being clever, just remove and re-create the whole "out" element
+	// var out = document.getElementById("out")
+	// while(out.firstChild) { out.removeChild(out.firstChild) }
+	// for (i=0; i<messages.length; i++) {
+	// 	var message = messages[i];
+	// 	message.timeDate = new Date(Number(message.time))
+	// 	var div = document.createElement("div");
+	// 	div.innerHTML = message.timeDate.toLocaleString()+" "+message._owner+" "+message.text;
+	// 	out.appendChild(div);
+	// }
 	// wait for 100ms then reload when there's new data.  If data
 	// comes faster than that, we don't really want it.
-	setTimeout(reload, 50);
 }
 
 
