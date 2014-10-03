@@ -35,8 +35,10 @@ function handleResponse(responseText) {
 	var messages = [];
 	for (var i=0; i<all.length; i++) {
 		var item = all[i];
+		console.log(item);
+		console.log(item._owner);
 		// consider the 'text' property to be the essential one
-		if (podURL() in item) {
+		if (item._owner==podURL()) {
 			messages.push(item)
 		}
 	}
