@@ -30,31 +30,24 @@ function reload() {
 
 function handleResponse(responseText) {
 	var responseJSON = JSON.parse(responseText);
-	console.log(responseJSON);
-
 	etag = responseJSON._etag;
-	console.log(etag);
-	// var all = responseJSON._members;
-	// var messages = [];
-	// for (var i=0; i<all.length; i++) {
-	// 	var item = all[i];
-	// 	// consider the 'text' property to be the essential one
-	// 	if ('text' in item) {
-	// 		messages.push(item)
-	// 	}
-	// }
-	// messages.sort(function(a,b){return a.time-b.time});
+	var all = responseJSON._members;
+	var messages = [];
+	for (var i=0; i<all.length; i++) {
+		var item = all[i];
+		// consider the 'text' property to be the essential one
+		if (podURL() in item) {
+			messages.push(item)
+		}
+	}
 	
-	// // not being clever, just remove and re-create the whole "out" element
-	// var out = document.getElementById("out")
-	// while(out.firstChild) { out.removeChild(out.firstChild) }
-	// for (i=0; i<messages.length; i++) {
-	// 	var message = messages[i];
-	// 	message.timeDate = new Date(Number(message.time))
-	// 	var div = document.createElement("div");
-	// 	div.innerHTML = message.timeDate.toLocaleString()+" "+message._owner+" "+message.text;
-	// 	out.appendChild(div);
-	// }
+	// not being clever, just remove and re-create the whole "out" element
+	var out = document.getElementById("out")
+	while(out.firstChild) { out.removeChild(out.firstChild) }
+
+		var message = messages[0];
+		out.innerHTML = podURL()+"'s favorite food is: "+message.food+" and favorite color is: "+message.color+".";
+	
 	// wait for 100ms then reload when there's new data.  If data
 	// comes faster than that, we don't really want it.
 }
