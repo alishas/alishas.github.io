@@ -14,7 +14,7 @@ function reload() {
 	var request = new XMLHttpRequest();
 
 	// just fetch everything, for now, since queries don't work yet
-	request.open("GET", podURL()+"/_nearby", true);
+	request.open("GET", podURL()+"/_active", true);
 	if (etag !== null) {
 		request.setRequestHeader("Wait-For-None-Match", etag);
 	}
