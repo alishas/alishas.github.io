@@ -45,7 +45,7 @@ function handleResponse(responseText) {
 	
 	// not being clever, just remove and re-create the whole "out" element
 	var out = document.getElementById("out")
-	for(int i =0;i<messages.length;i++){
+	for(i=0;i<messages.length;i++){
 		var message = messages[i];
 		out.append = document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".";
 	}
