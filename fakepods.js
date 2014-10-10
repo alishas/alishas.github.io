@@ -16,9 +16,10 @@ function reload() {
 
 	// just fetch everything, for now, since queries don't work yet
 	request.open("GET", podURL()+"/_active", true);
-	if (etag !== null) {
-		request.setRequestHeader("Wait-For-None-Match", etag);
-	}
+//	if (etag !== null) {
+//		request.setRequestHeader("Wait-For-None-Match", etag);
+//        alert("null");
+//	}
 
 	request.onreadystatechange = function() {
 		if (request.readyState==4 && request.status==200) {
@@ -48,9 +49,10 @@ function handleResponse(responseText) {
 	var out = document.getElementById("out")
 	for(i=0;i<messages.length;i++){
 		var message = messages[i];
-		while(out.firstChild) { out.removeChild(out.firstChild) }
+		//while(out.firstChild) { out.removeChild(out.firstChild) }
 		if(message.food&&message.color){
-			html= html+document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".<br>";
+			html+=document.getElementById("podurl").value+"'s favorite food is "+message.food+" and favorite color is "+message.color+".<br>";
+            alert(html);
 		}
 	}
 	out.innerHTML=html;
