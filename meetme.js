@@ -36,7 +36,19 @@ $(function(){
         navigator.geolocation.getCurrentPosition(
             function( position ){
                 if (locationMarker){
-                    return;
+                    updateMarker(
+                    locationMarker,
+                    position.coords.latitude,
+                    position.coords.longitude,
+                    pod.getUserId()
+                );
+                }
+                else{
+                    locationMarker = addMarker(
+                    position.coords.latitude,
+                    position.coords.longitude,
+                    pod.getUserId()
+                );
                 }
                 console.log( "Initial Position Found" );
                 map = new google.maps.Map(
@@ -50,11 +62,7 @@ $(function(){
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
                 );
-                locationMarker = addMarker(
-                    position.coords.latitude,
-                    position.coords.longitude,
-                    pod.getUserId()
-                );
+                
                 myLocation = {
                             _id: pod.getUserId()+"/r1", 
                             isLocation: true,
