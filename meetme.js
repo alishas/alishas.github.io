@@ -35,7 +35,7 @@ $(function(){
         
         navigator.geolocation.getCurrentPosition(
             function( position ){
-                
+
                 console.log( "Initial Position Found" );
                 map = new google.maps.Map(
                 mapContainer[ 0 ],
@@ -63,7 +63,6 @@ $(function(){
                     pod.getUserId()
                 );
                 }
-                
                 myLocation = {
                             _id: pod.getUserId()+"/r1", 
                             isLocation: true,
