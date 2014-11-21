@@ -2,14 +2,16 @@
 var locationMarker = null;
 var map = "";
 var myLocation="";
-    function addMarker( latitude, longitude, label ){
+var pod="";
+    function addMarker( latitude, longitude, label,color ){
         var marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(
                 latitude,
                 longitude
             ),
-            title: (label || "")
+            title: (label || ""),
+            icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'
         });
         return( marker );
     }
@@ -24,20 +26,25 @@ var myLocation="";
             marker.setTitle( label );
         }
     }
+
+    function meetWith(){
+        var wantToMeet = {
+                    _id: pod.getUserId()+"/r1", 
+                    wantToMeet: document.getElementById("meet_with").value
+                  };
+        pod.push(wantToMeet);
+    }
 $(function(){
     $("#error").html("");  // clear the "Missing Javascript" error message
 
-    var pod = crosscloud.connect();
-    var myMessages = [];
+    pod = crosscloud.connect();
 
     var mapContainer = $( "#mapContainer" );
     if (navigator.geolocation) {
         
         navigator.geolocation.getCurrentPosition(
             function( position ){
-                if (locationMarker){
-                    return;
-                }
+                
                 console.log( "Initial Position Found" );
                 map = new google.maps.Map(
                 mapContainer[ 0 ],
@@ -50,11 +57,22 @@ $(function(){
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
                 );
-                locationMarker = addMarker(
+                if (locationMarker){
+                    updateMarker(
+                    locationMarker,
                     position.coords.latitude,
                     position.coords.longitude,
                     pod.getUserId()
                 );
+                }
+                else{
+                    locationMarker = addMarker(
+                    position.coords.latitude,
+                    position.coords.longitude,
+                    pod.getUserId(),'blue'
+                );
+                }
+                
                 myLocation = {
                             _id: pod.getUserId()+"/r1", 
                             isLocation: true,
@@ -100,16 +118,28 @@ $(function(){
         );
     
     }
-    var show = 5;
     var displayMap = function (items) {
         items.forEach(function(item) {
-            addMarker(item.latitude,item.longitude,item._owner);
+            var iMeet="";
+            if(item._owner==pod.getUserId()){
+                iMeet=item.wantToMeet;
+            }
+            if (item.wantToMeet==pod.getUserId()||item._owner==iMeet){
+                addMarker(item.latitude,item.longitude,item._owner,'red');
+            }
+           // if (item.owner==pod.)
+        
         });
     };
+    var panel = document.getElementById("legend");
+    document.body.style.backgroundColor = "white";
+    panel.style.backgroundColor = "white";
+    panel.style.padding = "1em";
+    panel.style.fontFamily = "Arial";
 
     pod.onLogin(function () {
         pod.query()
-            .filter( { isLocation: true } )
+            .filter( { isLocation:true } )
             .onAllResults(displayMap)
             .start();
     });

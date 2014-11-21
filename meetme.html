@@ -2,10 +2,10 @@
 <html lang="en-US">
 <head>
 <title>Test</title>
-<script src="./Crosscloud.js"></script>
+<script src="./crosscloud.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script src="./meetme.js"></script>
+<script src="./test.js"></script>
 <style>
 html,
 body {
@@ -53,6 +53,13 @@ td, th {
 </style>
 </head>
 <body>
+  <div id="legend" style="float:left">
+    <form onsubmit="meetWith();">
+      Who do you want to meet today?
+      <input id="meet_with" type="text"/> 
+      <input type="submit" value="Submit"/>
+    </form>
+  </div>
   <div id="error">JS Not Running</div>
     <div id="mapContainer">
     </div>
