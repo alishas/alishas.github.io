@@ -125,10 +125,11 @@ $(function(){
                 iMeet=item.wantToMeet;
             }
             if (item.wantToMeet==pod.getUserId()||item._owner==iMeet){
+                addMarker(item.latitude,item.longitude,item._owner,'green');
+            }
+            else if(item.isLocation==true){
                 addMarker(item.latitude,item.longitude,item._owner,'red');
             }
-           // if (item.owner==pod.)
-        
         });
     };
     var panel = document.getElementById("legend");
