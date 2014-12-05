@@ -3,6 +3,9 @@ var locationMarker = null;
 var map = "";
 var myLocation="";
 var pod="";
+var controlUI = document.getElementById('controlUI');
+var controlText = document.getElementById('controlText');
+var homeControlDiv = document.getElementById("homeControlDiv");
 
 
 /**
@@ -19,29 +22,21 @@ var pod="";
    controlDiv.style.padding = '5px';
 
    // Set CSS for the control border
-   var controlUI = document.getElementById('controlUI');
    controlUI.style.backgroundColor = 'white';
    controlUI.style.borderStyle = 'solid';
    controlUI.style.borderWidth = '2px';
    controlUI.style.cursor = 'pointer';
    controlUI.style.textAlign = 'center';
-   controlUI.title = 'Click to set the map to Home';
+   controlUI.title = 'Click to zoom';
    controlDiv.appendChild(controlUI);
 
    // Set CSS for the control interior
-   var controlText = document.getElementById('controlText');
    controlText.style.fontFamily = 'Arial,sans-serif';
    controlText.style.fontSize = '12px';
    controlText.style.paddingLeft = '4px';
    controlText.style.paddingRight = '4px';
    controlText.innerHTML = '<b>Home</b>';
    controlUI.appendChild(controlText);
-
-   // Setup the click event listeners: simply set the map to
-   // Chicago
-   google.maps.event.addDomListener(controlUI, 'click', function() {
-     map.setCenter(location)
-   });
 
  }
 
@@ -121,7 +116,6 @@ $(function(){
                     pod.getUserId()
                  );
 
-                var homeControlDiv = document.getElementById("homeControlDiv");
                 var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
                         position.coords.latitude,
                         position.coords.longitude
@@ -177,6 +171,9 @@ $(function(){
     
     }
     var displayMap = function (items) {
+        var legendHTML="";
+        var newDiv="";
+        var textDiv="";
         items.forEach(function(item) {
             var iMeet="";
             if(item._owner==pod.getUserId()){
@@ -186,9 +183,31 @@ $(function(){
                 addMarker(item.latitude,item.longitude,item._owner,'green');
             }
             else if(item.isLocation==true){
-                addMarker(item.latitude,item.longitude,item._owner,'red');
+                addMarker(item.latitude,item.longitude,"",'red');
             }
+            newDiv = document.createElement('div')
+            newDiv.style.backgroundColor = 'white';
+            newDiv.style.borderStyle = 'solid';
+            newDiv.style.borderWidth = '2px';
+            newDiv.style.cursor = 'pointer';
+            newDiv.style.textAlign = 'center';
+            newDiv.title = 'Click to set the map to Home';
+            controlDiv.appendChild(newDiv);
+
+            // Set CSS for the control interior
+            textDiv = document.createElement('div');
+            textDiv.style.fontFamily = 'Arial,sans-serif';
+            textDiv.style.fontSize = '15px';
+            textDiv.style.paddingLeft = '4px';
+            textDiv.style.paddingRight = '4px';
+            legendHTML += item._owner+"<br>";
+            controlUI.appendChild(textDiv);
+            google.maps.event.addDomListener(newDiv, 'click', function() {
+                map.setCenter(new google.maps.LatLng(item.latitude,item.longitude));
+            });
         });
+        textDiv.innerHTML=legendHTML;
+        
     };
     var panel = document.getElementById("legend");
     document.body.style.backgroundColor = "white";
