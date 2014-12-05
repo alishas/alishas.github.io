@@ -3,30 +3,43 @@ var locationMarker = null;
 var map = "";
 var myLocation="";
 var pod="";
-    function addMarker( latitude, longitude, label,color ){
-        var marker = new google.maps.Marker({
-            map: map,
-            position: new google.maps.LatLng(
-                latitude,
-                longitude
-            ),
-            title: (label || ""),
-            icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'
-        });
-        return( marker );
+
+function addMarker( latitude, longitude, label,color ){
+    var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(
+            latitude,
+            longitude
+        ),
+        title: (label || ""),
+        icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'
+    });
+    return( marker );
+
+    var label = new Label({
+           map: map
+         });
+         label.bindTo('position', marker, 'position');
+         label.bindTo('text', marker, 'position');
+}
+
+function updateMarker( marker, latitude, longitude, label ){
+    if(marker==null){
+        addMarker(latitude,longitude,label,"blue");
     }
-    function updateMarker( marker, latitude, longitude, label ){
+    else{
         marker.setPosition(
-            new google.maps.LatLng(
-                latitude,
-                longitude
-            )
+        new google.maps.LatLng(
+            latitude,
+            longitude
+        )
         );
         if (label){
-            marker.setTitle( label );
+        marker.setTitle( label );
         }
     }
-
+}
+//(label.substring(label.indexOf('/')+2,label.indexOf('.'))
     function meetWith(){
         var wantToMeet = {
                     _id: pod.getUserId()+"/r1", 
@@ -57,24 +70,17 @@ $(function(){
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
                 );
-                if (locationMarker){
+                
                     updateMarker(
                     locationMarker,
                     position.coords.latitude,
                     position.coords.longitude,
                     pod.getUserId()
-                );
-                }
-                else{
-                    locationMarker = addMarker(
-                    position.coords.latitude,
-                    position.coords.longitude,
-                    pod.getUserId(),'blue'
-                );
-                }
+                 );
+                
                 
                 myLocation = {
-                            _id: pod.getUserId()+"/r1", 
+                            _id: pod.getUserId()+"/r100", 
                             isLocation: true,
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -146,4 +152,3 @@ $(function(){
     });
 
 });
-
