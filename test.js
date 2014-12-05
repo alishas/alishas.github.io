@@ -5,7 +5,7 @@ var myLocation="";
 var pod="";
 var controlUI = document.getElementById('controlUI');
 var controlText = document.getElementById('controlText');
-var homeControlDiv = document.getElementById("homeControlDiv");
+var homeControlDiv = document.getElementById('homeControlDiv');
 
 
 /**
@@ -192,7 +192,7 @@ $(function(){
             newDiv.style.cursor = 'pointer';
             newDiv.style.textAlign = 'center';
             newDiv.title = 'Click to set the map to Home';
-            controlDiv.appendChild(newDiv);
+            homeControlDiv.appendChild(newDiv);
 
             // Set CSS for the control interior
             textDiv = document.createElement('div');
