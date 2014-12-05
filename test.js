@@ -12,13 +12,13 @@ function addMarker( latitude, longitude, label,color ){
             longitude
         ),
         title: (label || ""),
-        labelContent: "(label.substring(label.indexOf('/')+2,label.indexOf('.'))",
-       labelAnchor: new google.maps.Point(22, 0),
-       labelClass: "labels", // the CSS class for the label
-       labelStyle: {opacity: 0.75},
+        labelContent: (label.substring(label.indexOf('/')+2,label.indexOf('.')),
+        labelAnchor: new google.maps.Point(22, 0),
+        labelClass: "labels", // the CSS class for the label
+        labelStyle: {opacity: 0.75},
         icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'
     });
-    return( marker );
+    google.maps.event.addListener(marker, "click", function (e) {});
 
 }
 
