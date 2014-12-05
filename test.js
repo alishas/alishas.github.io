@@ -12,15 +12,14 @@ function addMarker( latitude, longitude, label,color ){
             longitude
         ),
         title: (label || ""),
+        labelContent: "(label.substring(label.indexOf('/')+2,label.indexOf('.'))",
+       labelAnchor: new google.maps.Point(22, 0),
+       labelClass: "labels", // the CSS class for the label
+       labelStyle: {opacity: 0.75},
         icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'
     });
     return( marker );
 
-    var label = new Label({
-           map: map
-         });
-         label.bindTo('position', marker, 'position');
-         label.bindTo('text', marker, 'position');
 }
 
 function updateMarker( marker, latitude, longitude, label ){
