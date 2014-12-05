@@ -16,7 +16,9 @@ function addMarker( latitude, longitude, label,color ){
         labelAnchor: new google.maps.Point(22, 0),
         labelClass: "labels", // the CSS class for the label
         labelStyle: {opacity: 0.75},
-        icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'
+        icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
+        draggable: true,
+       raiseOnDrag: true
     });
     google.maps.event.addListener(marker, "click", function (e) {});
     return marker;
