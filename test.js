@@ -46,12 +46,6 @@ function HomeControl(controlDiv, map) {
 }
 
 function initialize() {
-  var mapDiv = document.getElementById('map-canvas');
-  var mapOptions = {
-    zoom: 12,
-    center: chicago
-  }
-  map = new google.maps.Map(mapDiv, mapOptions);
 
   // Create the DIV to hold the control and
   // call the HomeControl() constructor passing
@@ -66,20 +60,20 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function addMarker( latitude, longitude, label,color ){
-    var marker = new MarkerWithLabel({
+    var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(
             latitude,
             longitude
         ),
-        title: (label || ""),
-        labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
-        labelAnchor: new google.maps.Point(22, 0),
-        labelClass: "labels", // the CSS class for the label
-        labelStyle: {opacity: 0.75},
-        icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
-        draggable: true,
-       raiseOnDrag: true
+        title: (label.substring(label.indexOf('/')+2,label.indexOf('.')) || ""),
+       //  labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
+       //  labelAnchor: new google.maps.Point(22, 0),
+       //  labelClass: "labels", // the CSS class for the label
+       //  labelStyle: {opacity: 0.75},
+       //  icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
+       //  draggable: true,
+       // raiseOnDrag: true
     });
     google.maps.event.addListener(marker, "click", function (e) {});
     return marker;
