@@ -11,7 +11,7 @@ var pod="";
  * the control DIV as an argument.
  * @constructor
  */
-function HomeControl(controlDiv, map) {
+function HomeControl(controlDiv, map, location) {
 
   // Set CSS styles for the DIV containing the control
   // Setting padding to 5 px will offset the control
@@ -40,24 +40,10 @@ function HomeControl(controlDiv, map) {
   // Setup the click event listeners: simply set the map to
   // Chicago
   google.maps.event.addDomListener(controlUI, 'click', function() {
-    map.setCenter(myLocation)
+    map.setCenter(location)
   });
 
 }
-
-function initialize() {
-
-  // Create the DIV to hold the control and
-  // call the HomeControl() constructor passing
-  // in this DIV.
-  var homeControlDiv = document.createElement('div');
-  var homeControl = new HomeControl(homeControlDiv, map);
-
-  homeControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
 
 function addMarker( latitude, longitude, label,color ){
     var marker = new google.maps.Marker({
@@ -134,6 +120,15 @@ $(function(){
                     position.coords.longitude,
                     pod.getUserId()
                  );
+
+                var homeControlDiv = document.createElement('div');
+  var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    ));
+
+  homeControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
                 
                 
                 myLocation = {
