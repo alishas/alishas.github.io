@@ -15,11 +15,6 @@ var homeControlDiv = $( "#homeControlDiv" );
  */
  function HomeControl(controlDiv, map, location) {
 
-   // Set CSS styles for the DIV containing the control
-   // Setting padding to 5 px will offset the control
-   // from the edge of the map
-   controlDiv.style.padding = '5px';
-
    // Set CSS for the control border
    controlUI.style.backgroundColor = 'white';
    controlUI.style.borderStyle = 'solid';
@@ -119,13 +114,7 @@ $(function(){
                     pod.getUserId()
                  );
 
-                var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
-                        position.coords.latitude,
-                        position.coords.longitude
-                    ));
-
-                homeControlDiv.index = 1;
-                map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+                
                 
                 
                 myLocation = {
@@ -210,7 +199,10 @@ $(function(){
             });
         });
         textDiv.innerHTML=legendHTML;
-        controlUI.appendChild(textDiv);
+        newDiv.appendChild(textDiv);
+
+        homeControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
     };
     var panel = document.getElementById("legend");
     document.body.style.backgroundColor = "white";
