@@ -3,8 +3,7 @@ var locationMarker = null;
 var map = "";
 var myLocation="";
 var pod="";
-var controlUI = document.getElementById('controlUI');
-var controlText = document.getElementById('controlText');
+
 var homeControlDiv = document.getElementById('homeControlDiv');
 
 
@@ -41,13 +40,14 @@ var homeControlDiv = document.getElementById('homeControlDiv');
  }
 
 function addMarker( latitude, longitude, label,color ){
+
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(
             latitude,
             longitude
         ),
-        title: (label.substring(label.indexOf('/')+2,label.indexOf('.')) || ""),
+        title: "",
        //  labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
        //  labelAnchor: new google.maps.Point(22, 0),
        //  labelClass: "labels", // the CSS class for the label
@@ -57,6 +57,9 @@ function addMarker( latitude, longitude, label,color ){
        // raiseOnDrag: true
     });
     google.maps.event.addListener(marker, "click", function (e) {});
+    if (label){
+        marker.setTitle(label.substring(label.indexOf('/')+2,label.indexOf('.')));
+    }
     return marker;
 
 }
@@ -201,13 +204,13 @@ $(function(){
             textDiv.style.paddingLeft = '4px';
             textDiv.style.paddingRight = '4px';
             legendHTML += item._owner+"<br>";
-            controlUI.appendChild(textDiv);
+            
             google.maps.event.addDomListener(newDiv, 'click', function() {
                 map.setCenter(new google.maps.LatLng(item.latitude,item.longitude));
             });
         });
         textDiv.innerHTML=legendHTML;
-        
+        controlUI.appendChild(textDiv);
     };
     var panel = document.getElementById("legend");
     document.body.style.backgroundColor = "white";
