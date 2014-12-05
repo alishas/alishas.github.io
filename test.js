@@ -5,7 +5,7 @@ var myLocation="";
 var pod="";
 
 function addMarker( latitude, longitude, label,color ){
-    var marker = new google.maps.Marker({
+    var marker = new MarkerWithLabel({
         map: map,
         position: new google.maps.LatLng(
             latitude,
