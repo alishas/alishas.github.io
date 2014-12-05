@@ -4,7 +4,7 @@ var map = "";
 var myLocation="";
 var pod="";
 
-var homeControlDiv = $( "#homeControlDiv" );
+var homeControlDiv = document.getElementById("homeControlDiv");
 
 
 /**
