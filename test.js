@@ -11,39 +11,39 @@ var pod="";
  * the control DIV as an argument.
  * @constructor
  */
-function HomeControl(controlDiv, map, location) {
+ function HomeControl(controlDiv, map, location) {
 
-  // Set CSS styles for the DIV containing the control
-  // Setting padding to 5 px will offset the control
-  // from the edge of the map
-  controlDiv.style.padding = '5px';
+   // Set CSS styles for the DIV containing the control
+   // Setting padding to 5 px will offset the control
+   // from the edge of the map
+   controlDiv.style.padding = '5px';
 
-  // Set CSS for the control border
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'white';
-  controlUI.style.borderStyle = 'solid';
-  controlUI.style.borderWidth = '2px';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.textAlign = 'center';
-  controlUI.title = 'Click to set the map to Home';
-  controlDiv.appendChild(controlUI);
+   // Set CSS for the control border
+   var controlUI = document.getElementById('controlUI');
+   controlUI.style.backgroundColor = 'white';
+   controlUI.style.borderStyle = 'solid';
+   controlUI.style.borderWidth = '2px';
+   controlUI.style.cursor = 'pointer';
+   controlUI.style.textAlign = 'center';
+   controlUI.title = 'Click to set the map to Home';
+   controlDiv.appendChild(controlUI);
 
-  // Set CSS for the control interior
-  var controlText = document.createElement('div');
-  controlText.style.fontFamily = 'Arial,sans-serif';
-  controlText.style.fontSize = '12px';
-  controlText.style.paddingLeft = '4px';
-  controlText.style.paddingRight = '4px';
-  controlText.innerHTML = '<b>Home</b>';
-  controlUI.appendChild(controlText);
+   // Set CSS for the control interior
+   var controlText = document.getElementById('controlText');
+   controlText.style.fontFamily = 'Arial,sans-serif';
+   controlText.style.fontSize = '12px';
+   controlText.style.paddingLeft = '4px';
+   controlText.style.paddingRight = '4px';
+   controlText.innerHTML = '<b>Home</b>';
+   controlUI.appendChild(controlText);
 
-  // Setup the click event listeners: simply set the map to
-  // Chicago
-  google.maps.event.addDomListener(controlUI, 'click', function() {
-    map.setCenter(location)
-  });
+   // Setup the click event listeners: simply set the map to
+   // Chicago
+   google.maps.event.addDomListener(controlUI, 'click', function() {
+     map.setCenter(location)
+   });
 
-}
+ }
 
 function addMarker( latitude, longitude, label,color ){
     var marker = new google.maps.Marker({
@@ -57,7 +57,7 @@ function addMarker( latitude, longitude, label,color ){
        //  labelAnchor: new google.maps.Point(22, 0),
        //  labelClass: "labels", // the CSS class for the label
        //  labelStyle: {opacity: 0.75},
-       //  icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
+        icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
        //  draggable: true,
        // raiseOnDrag: true
     });
@@ -121,14 +121,14 @@ $(function(){
                     pod.getUserId()
                  );
 
-                var homeControlDiv = document.createElement('div');
-  var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
+                var homeControlDiv = document.getElementById("homeControlDiv");
+                var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
                         position.coords.latitude,
                         position.coords.longitude
                     ));
 
-  homeControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+                homeControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
                 
                 
                 myLocation = {
