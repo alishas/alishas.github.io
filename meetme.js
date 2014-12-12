@@ -20,7 +20,7 @@ function HomeControl(controlDiv, map) {
     controlText[marker] = document.createElement('div');
     controlText[marker].id="text";
     controlText[marker].innerHTML = marker;
-    controlUI[marker].appendChild(controlText);
+    controlUI[marker].appendChild(controlText[marker]);
 
     google.maps.event.addDomListener(controlText[marker], 'click', function() {
       map.setCenter(markers[marker].getPosition());
