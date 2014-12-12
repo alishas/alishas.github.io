@@ -177,6 +177,7 @@ $(function(){
     }
     var displayMap = function (items) {
         items.forEach(function(item) {
+            console.log(item)
             var iMeet="";
             if(item._owner==pod.getUserId()){
                 iMeet=item.wantToMeet;
