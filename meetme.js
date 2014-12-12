@@ -23,7 +23,7 @@ function HomeControl(controlDiv, map) {
     controlText[marker].innerHTML = marker;
     controlUI[marker].appendChild(controlText[marker]);
 
-    google.maps.event.addDomListener(controlText[marker], 'click', function() {
+    google.maps.event.addDomListener(controlUI[marker], 'click', function() {
       map.setCenter(markers[marker].getPosition());
       map.setZoom(15);
     });
