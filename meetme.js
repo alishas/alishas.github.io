@@ -14,13 +14,13 @@ function HomeControl(controlDiv, map) {
 
   for (var marker in markers){
     controlUI[marker] = document.createElement('div');
-    controlUI[marker].class = "ui";
+    controlUI[marker].className = "ui";
     controlUI[marker].id="UI"+marker;
     controlUI[marker].title="Click to zoom";
     controlDiv.appendChild(controlUI[marker]);
 
     controlText[marker] = document.createElement('div');
-    controlText[marker].class="text";
+    controlText[marker].className="text";
     controlText[marker].id="Text"+marker;
     controlText[marker].innerHTML = marker;
     controlUI[marker].appendChild(controlText[marker]);
