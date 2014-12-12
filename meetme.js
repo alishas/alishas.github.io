@@ -14,7 +14,7 @@ function HomeControl(controlDiv, map) {
 
   for (var marker in markers){
     console.log(marker);
-    if(marker.getTitle!=null){
+    if(markers[marker].getTitle!=null){
         controlUI[marker] = document.createElement('div');
         controlUI[marker].className = "ui";
         controlUI[marker].id="UI"+marker;
