@@ -30,7 +30,7 @@ function HomeControl(controlDiv, map, location) {
     console.log(marker);
     var controlText = document.createElement('div');
     controlText.id="text";
-    controlText.innerHTML = '<b>'+marker.getTitle()+'</b>';
+    controlText.innerHTML = '<b>Home</b>';
     controlUI.appendChild(controlText);
 
     google.maps.event.addDomListener(controlText, 'click', function() {
