@@ -52,7 +52,7 @@ function addMarker( latitude, longitude, label, color ){
             longitude
         ),      draggable: true,
       map: map,
-      labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.'),
+      labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
       labelAnchor: new google.maps.Point(22, 0),
       labelClass: "labels", // the CSS class for the label
       labelStyle: {opacity: 0.75},
