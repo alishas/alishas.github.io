@@ -46,20 +46,25 @@ function HomeControl(controlDiv, map) {
 }
 
 function addMarker( latitude, longitude, label, color ){
-    markers[label] = new google.maps.Marker({
-        map: map,
+    markers[label] = new MarkerWithLabel({
         position: new google.maps.LatLng(
             latitude,
             longitude
-        ),
-       //  labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
-       //  labelAnchor: new google.maps.Point(22, 0),
-       //  labelClass: "labels", // the CSS class for the label
-       //  labelStyle: {opacity: 0.75},
-         icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
-       //  draggable: true,
-       // raiseOnDrag: true
+        ),      draggable: true,
+      map: map,
+      labelContent: label,
+      labelAnchor: new google.maps.Point(22, 0),
+      labelClass: "labels", // the CSS class for the label
+      labelStyle: {opacity: 0.75},
     });
+    // markers[label] = new google.maps.Marker({
+    //     map: map,
+    //     position: new google.maps.LatLng(
+    //         latitude,
+    //         longitude
+    //     ),
+    //      icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
+    // });
 
     if (color!='red'){
       markers[label].setTitle(label);
