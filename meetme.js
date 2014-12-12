@@ -13,7 +13,7 @@ function HomeControl(controlDiv, map) {
   controlDiv.style.padding = '5px';
 
   for (var marker in markers){
-    if(marker!=null){
+    if(marker!=null && marker!=undefined){
         controlUI[marker] = document.createElement('div');
         controlUI[marker].className = "ui";
         controlUI[marker].id="UI"+marker;
