@@ -62,9 +62,9 @@ function addMarker( latitude, longitude, label, color ){
        //  draggable: true,
        // raiseOnDrag: true
     });
-    google.maps.event.addListener(marker, "click", function (e) {});
-    return marker;
 
+    google.maps.event.addListener(markers[label], "click", function (e) {});
+    return markers[label];
 }
 
 function updateMarker( marker, latitude, longitude, label ){
