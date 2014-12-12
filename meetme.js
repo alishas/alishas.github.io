@@ -5,7 +5,7 @@ var myLocation="";
 var pod="";
 var markers=new Array();
 
-function HomeControl(controlDiv, map, location) {
+function HomeControl(controlDiv, map) {
 
   controlDiv.style.padding = '5px';
 
@@ -169,10 +169,7 @@ $(function(){
             }
         });
         var homeControlDiv = document.createElement('div');
-        var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
-                               position.coords.latitude,
-                               position.coords.longitude
-                           ));
+        var homeControl = new HomeControl(homeControlDiv, map);
 
         homeControlDiv.index = 1;
         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
