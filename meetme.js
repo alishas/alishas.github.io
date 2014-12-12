@@ -146,7 +146,6 @@ $(function(){
                             when: (new Date()).toISOString()
                           };
                 pod.push(myLocation);
-                console.log("id "+myLocation._id);
             }
         );
         setTimeout(
@@ -170,12 +169,12 @@ $(function(){
                 updateMarker(item.latitude,item.longitude,item._owner,'red');
             }
         });
-        var homeControlDiv = document.createElement('div');
+    };
+    var homeControlDiv = document.createElement('div');
         var homeControl = new HomeControl(homeControlDiv, map);
 
         homeControlDiv.index = 1;
         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-    };
     // var panel = document.getElementById("legend");
     // document.body.style.backgroundColor = "white";
     // panel.style.backgroundColor = "white";
