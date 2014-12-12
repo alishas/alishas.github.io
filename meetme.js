@@ -27,13 +27,14 @@ function HomeControl(controlDiv, map, location) {
 
   // Set CSS for the control interior
   for (var marker in markers){
+    console.log(marker);
     var controlText = document.createElement('div');
     controlText.id="text";
     controlText.innerHTML = '<b>'+marker.getTitle()+'</b>';
     controlUI.appendChild(controlText);
 
     google.maps.event.addDomListener(controlText, 'click', function() {
-      map.setCenter(marker.getPosition())
+      map.setCenter(marker.getPosition());
     });
   }
 }
