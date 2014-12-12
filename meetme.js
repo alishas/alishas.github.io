@@ -14,7 +14,7 @@ function HomeControl(controlDiv, map) {
 
   for (var marker in markers){
     console.log(marker);
-    if(marker!=null && marker!=undefined){
+    if(marker.getTitle!=null){
         controlUI[marker] = document.createElement('div');
         controlUI[marker].className = "ui";
         controlUI[marker].id="UI"+marker;
@@ -63,9 +63,9 @@ function addMarker( latitude, longitude, label, color ){
        // raiseOnDrag: true
     });
 
-    //if (color!='red'){
+    if (color!='red'){
       markers[label].setTitle(label);
-    //}
+    }
     google.maps.event.addListener(markers[label], "click", function (e) {});
     return markers[label];
 }
