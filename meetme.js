@@ -53,7 +53,6 @@ function addMarker( latitude, longitude, label, color ){
             latitude,
             longitude
         ),
-        title: (label.substring(label.indexOf('/')+2,label.indexOf('.')) || ""),
        //  labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
        //  labelAnchor: new google.maps.Point(22, 0),
        //  labelClass: "labels", // the CSS class for the label
@@ -62,14 +61,16 @@ function addMarker( latitude, longitude, label, color ){
        //  draggable: true,
        // raiseOnDrag: true
     });
-
+    if (color!='red'){
+      markers[label].setTitle(label.substring(label.indexOf('/')+2,label.indexOf('.')));
+    }
     google.maps.event.addListener(markers[label], "click", function (e) {});
     return markers[label];
 }
 
-function updateMarker( marker, latitude, longitude, label ){
+function updateMarker(marker, latitude, longitude, label, color){
     if(markers[label]==null){
-        addMarker(latitude,longitude,label,"blue");
+        addMarker(latitude,longitude,label,color);
     }
     else{
         markers[label].setPosition(
@@ -78,9 +79,6 @@ function updateMarker( marker, latitude, longitude, label ){
             longitude
         )
         );
-        if (label){
-        markers[label].setTitle( label );
-        }
     }
 }
 //(label.substring(label.indexOf('/')+2,label.indexOf('.'))
