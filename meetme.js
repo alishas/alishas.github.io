@@ -34,7 +34,7 @@ function HomeControl(controlDiv, map) {
                 });
 
                 google.maps.event.addDomListener(controlText[marker], 'mouseover', function() {
-                  controlUI[marker].style.backgroundColor="rgb(86,86,86)";
+                  controlUI[marker].style.backgroundColor="rgb(195,195,195)";
                 });
 
                 google.maps.event.addDomListener(controlText[marker], 'mouseout', function() {
