@@ -84,13 +84,7 @@ $(function(){
             .on('AllResults',displayMap)
             .start();
     });
-    
-    var homeControlDiv = document.createElement('div');
-    var homeControl = new HomeControl(homeControlDiv, map);
 
-    homeControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-   
     var mapContainer = $( "#mapContainer" );
     if (navigator.geolocation) {
         
@@ -161,7 +155,12 @@ $(function(){
             },
             (1000 * 60 * 5)
         );
-    
+    var homeControlDiv = document.createElement('div');
+    var homeControl = new HomeControl(homeControlDiv, map);
+
+    homeControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+   
     }
     var displayMap = function (items) {
         items.forEach(function(item) {
