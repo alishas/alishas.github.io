@@ -62,7 +62,7 @@ function addMarker( latitude, longitude, label, color ){
        // raiseOnDrag: true
     });
     if (color!='red'){
-      markers[label].setTitle(label.substring(label.indexOf('/')+2,label.indexOf('.')));
+      markers[label].setTitle(label);
     }
     google.maps.event.addListener(markers[label], "click", function (e) {});
     return markers[label];
@@ -114,7 +114,6 @@ $(function(){
                 );
                 
                     updateMarker(
-                    locationMarker,
                     position.coords.latitude,
                     position.coords.longitude,
                     pod.getUserId(),
@@ -153,7 +152,6 @@ $(function(){
             function( position ){
                 console.log( "Newer Position Found" );
                 updateMarker(
-                    locationMarker,
                     position.coords.latitude,
                     position.coords.longitude,
                     pod.getUserId(),
