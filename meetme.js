@@ -68,7 +68,7 @@ function addMarker( latitude, longitude, label, color ){
     return markers[label];
 }
 
-function updateMarker(marker, latitude, longitude, label, color){
+function updateMarker(latitude, longitude, label, color){
     if(markers[label]==null){
         addMarker(latitude,longitude,label,color);
     }
@@ -117,7 +117,8 @@ $(function(){
                     locationMarker,
                     position.coords.latitude,
                     position.coords.longitude,
-                    pod.getUserId()
+                    pod.getUserId(),
+                    'blue'
                  );
 
                 var homeControlDiv = document.createElement('div');
@@ -155,7 +156,8 @@ $(function(){
                     locationMarker,
                     position.coords.latitude,
                     position.coords.longitude,
-                    pod.getUserId()
+                    pod.getUserId(),
+                    'blue'
                 );
                 myLocation = {
                             _id: pod.getUserId()+"/r1", 
