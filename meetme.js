@@ -28,10 +28,12 @@ function HomeControl(controlDiv, map) {
     google.maps.event.addDomListener(controlUI[marker], 'click', function() {
       map.setCenter(markers[marker].getPosition());
       map.setZoom(15);
+      console.log(marker+ " click");
     });
 
     google.maps.event.addDomListener(controlUI[marker], 'hover', function() {
       controlUI[marker].style.backgroundColor="gray";
+      console.log(marker+" hover");
     });
   }
 }
