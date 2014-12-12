@@ -61,9 +61,10 @@ function addMarker( latitude, longitude, label, color ){
        //  draggable: true,
        // raiseOnDrag: true
     });
-    if (color!='red'){
+    
+    //if (color!='red'){
       markers[label].setTitle(label);
-    }
+    //}
     google.maps.event.addListener(markers[label], "click", function (e) {});
     return markers[label];
 }
@@ -84,7 +85,6 @@ function updateMarker(latitude, longitude, label, color){
 //(label.substring(label.indexOf('/')+2,label.indexOf('.'))
     function meetWith(){
         var wantToMeet = {
-                    _id: pod.getUserId()+"/r1", 
                     wantToMeet: document.getElementById("meet_with").value
                   };
         pod.push(wantToMeet);
