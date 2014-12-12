@@ -31,12 +31,10 @@ function HomeControl(controlDiv, map) {
                 google.maps.event.addDomListener(controlText[marker], 'click', function() {
                   map.setCenter(markers[marker].getPosition());
                   map.setZoom(15);
-                  console.log(marker+ " click");
                 });
 
                 google.maps.event.addDomListener(controlText[marker], 'mouseover', function() {
-                  controlUI[marker].style.backgroundColor="gray";
-                  console.log(marker+" over");
+                  controlUI[marker].style.backgroundColor="rgb(86,86,86)";
                 });
 
                 google.maps.event.addDomListener(controlText[marker], 'mouseout', function() {
@@ -194,7 +192,7 @@ $(function(){
           var homeControl = new HomeControl(homeControlDiv, map);
 
           homeControlDiv.index = 1;
-          map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+          map.controls[google.maps.ControlPosition.RIGHT].push(homeControlDiv);
         }
         count++;
     };
