@@ -21,29 +21,21 @@ function HomeControl(controlDiv, map, location) {
 
   // Set CSS for the control border
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'white';
-  controlUI.style.borderStyle = 'solid';
-  controlUI.style.borderWidth = '2px';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.textAlign = 'center';
-  controlUI.title = 'Click to set the map to Home';
+  controlUI.id = "ui";
+  controlUI.title="Click to zoom"
   controlDiv.appendChild(controlUI);
 
   // Set CSS for the control interior
-  var controlText = document.createElement('div');
-  controlText.style.fontFamily = 'Arial,sans-serif';
-  controlText.style.fontSize = '12px';
-  controlText.style.paddingLeft = '4px';
-  controlText.style.paddingRight = '4px';
-  controlText.innerHTML = '<b>Home</b>';
-  controlUI.appendChild(controlText);
+  for (var marker in markers){
+    var controlText = document.createElement('div');
+    controlText.id="text";
+    controlText.innerHTML = '<b>'+marker.getTitle()+'</b>';
+    controlUI.appendChild(controlText);
 
-  // Setup the click event listeners: simply set the map to
-  // Chicago
-  google.maps.event.addDomListener(controlUI, 'click', function() {
-    map.setCenter(location)
-  });
-
+    google.maps.event.addDomListener(controlText, 'click', function() {
+      map.setCenter(marker.getPosition())
+    });
+  }
 }
 
 function addMarker( latitude, longitude, label, color ){
@@ -86,7 +78,7 @@ function updateMarker(latitude, longitude, label, color){
     function meetWith(){
         var wantToMeet = {
                     _id: pod.getUserId()+"a1",
-                    wantToMeet: document.getElementById("meet_with").value
+                    wantToMeet: "http://"+document.getElementById("meet_with").value+"/"
                   };
         pod.push(wantToMeet);
     }
@@ -190,7 +182,7 @@ $(function(){
             if(item._owner==pod.getUserId()){
                 iMeet=item.wantToMeet;
             }
-            if (item.wantToMeet==pod.getUserId()||item._owner==iMeet){
+            if(item.wantToMeet==pod.getUserId()||item._owner==iMeet){
                 updateMarker(item.latitude,item.longitude,item._owner,'green');
             }
             else if(item.isLocation==true){
@@ -198,11 +190,11 @@ $(function(){
             }
         });
     };
-    var panel = document.getElementById("legend");
-    document.body.style.backgroundColor = "white";
-    panel.style.backgroundColor = "white";
-    panel.style.padding = "1em";
-    panel.style.fontFamily = "Arial";
+    // var panel = document.getElementById("legend");
+    // document.body.style.backgroundColor = "white";
+    // panel.style.backgroundColor = "white";
+    // panel.style.padding = "1em";
+    // panel.style.fontFamily = "Arial";
 
     
 
