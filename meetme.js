@@ -27,13 +27,13 @@ function HomeControl(controlDiv, map) {
         controlText[marker].innerHTML = marker;
         controlUI[marker].appendChild(controlText[marker]);
 
-        google.maps.event.addDomListener(document.getElementById("UI"+marker), 'click', function() {
+        google.maps.event.addDomListener($("#UI"+marker), 'click', function() {
           map.setCenter(markers[marker].getPosition());
           map.setZoom(15);
           console.log(marker+ " click");
         });
 
-        google.maps.event.addDomListener(document.getElementById("UI"+marker), 'mouseover', function() {
+        google.maps.event.addDomListener($("#UI"+marker), 'mouseover', function() {
           controlUI[marker].style.backgroundColor="gray";
           console.log(marker+" hover");
         });
