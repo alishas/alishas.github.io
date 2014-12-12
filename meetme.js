@@ -9,12 +9,10 @@ var controlText=new Array();
 var count=0;
 
 function HomeControl(controlDiv, map) {
-
+  controlDiv.appendChild(document.getElementById("legend"));
   controlDiv.style.padding = '5px';
-
   for (var marker in markers){
-    console.log(marker);
-    if(markers[marker].getTitle!=null){
+    if(markers[marker].getTitle()!=null){
         controlUI[marker] = document.createElement('div');
         controlUI[marker].className = "ui";
         controlUI[marker].id="UI"+marker;
