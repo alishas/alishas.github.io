@@ -30,11 +30,11 @@ function HomeControl(controlDiv, map, location) {
     console.log(marker);
     var controlText = document.createElement('div');
     controlText.id="text";
-    controlText.innerHTML = '<b>Home</b>';
+    controlText.innerHTML = '<b>'+marker+'</b>';
     controlUI.appendChild(controlText);
 
     google.maps.event.addDomListener(controlText, 'click', function() {
-      map.setCenter(marker.getPosition());
+      map.setCenter(markers[marker].getPosition());
     });
   }
 }
