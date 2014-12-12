@@ -169,7 +169,6 @@ $(function(){
             else if(item.isLocation==true){
                 updateMarker(item.latitude,item.longitude,item._owner,'red');
             }
-            count++;
         });
         if (count==0){
           var homeControlDiv = document.createElement('div');
@@ -178,6 +177,7 @@ $(function(){
           homeControlDiv.index = 1;
           map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
         }
+        count++;
     };
 
     // var panel = document.getElementById("legend");
