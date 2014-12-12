@@ -20,14 +20,15 @@ function HomeControl(controlDiv, map, location) {
   controlDiv.style.padding = '5px';
 
   // Set CSS for the control border
-  var controlUI = document.createElement('div');
-  controlUI.id = "ui";
-  controlUI.title="Click to zoom"
-  controlDiv.appendChild(controlUI);
+
 
   // Set CSS for the control interior
   for (var marker in markers){
-    console.log(marker);
+    var controlUI = document.createElement('div');
+    controlUI.id = "ui";
+    controlUI.title="Click to zoom"
+    controlDiv.appendChild(controlUI);
+
     var controlText = document.createElement('div');
     controlText.id="text";
     controlText.innerHTML = '<b>'+marker+'</b>';
@@ -35,6 +36,7 @@ function HomeControl(controlDiv, map, location) {
 
     google.maps.event.addDomListener(controlText, 'click', function() {
       map.setCenter(markers[marker].getPosition());
+      map.setZoom(15);
     });
   }
 }
@@ -121,16 +123,6 @@ $(function(){
                     'blue'
                  );
 
-                var homeControlDiv = document.createElement('div');
-  var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
-                        position.coords.latitude,
-                        position.coords.longitude
-                    ));
-
-  homeControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-                
-                
                 myLocation = {
                             _id: pod.getUserId()+"a1", 
                             isLocation: true,
