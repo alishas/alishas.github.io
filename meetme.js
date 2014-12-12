@@ -46,19 +46,19 @@ function HomeControl(controlDiv, map) {
 }
 
 function addMarker( latitude, longitude, label, color ){
-    if (color=='red'){
-        label="Anon";
-    }
-    else{
-        label=label.substring(label.indexOf('/')+2,label.indexOf('.'));
-    }
+    //  if (color=='red'){
+    //     label="Anon";
+    // }
+    // else{
+    //     label=label.substring(label.indexOf('/')+2,label.indexOf('.'));
+    // }
     markers[label] = new MarkerWithLabel({
         position: new google.maps.LatLng(
             latitude,
             longitude
         ),      draggable: true,
       map: map,
-      labelContent: label,
+      labelContent: label.substring(label.indexOf('/')+2,label.indexOf('.')),
       labelAnchor: new google.maps.Point(22, 0),
       labelClass: "labels", // the CSS class for the label
       labelStyle: {opacity: 0.75},
@@ -73,6 +73,10 @@ function addMarker( latitude, longitude, label, color ){
     //     ),
     //      icon:'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png',
     // });
+
+    if (color!='red'){
+      markers[label].setTitle(label);
+    }
     google.maps.event.addListener(markers[label], "click", function (e) {});
     return markers[label];
 }
