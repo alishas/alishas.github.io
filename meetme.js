@@ -158,7 +158,7 @@ $(function(){
                     'blue'
                 );
                 myLocation = {
-                            _id: pod.getUserId()+"/r1", 
+                            _id: myLocation._id, 
                             isLocation: true,
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -177,7 +177,7 @@ $(function(){
     }
     var displayMap = function (items) {
         items.forEach(function(item) {
-            console.log(item)
+            console.log("item"+item)
             var iMeet="";
             if(item._owner==pod.getUserId()){
                 iMeet=item.wantToMeet;
