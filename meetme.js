@@ -93,6 +93,13 @@ $(function(){
     $("#error").html("");  // clear the "Missing Javascript" error message
 
     pod = crosscloud.connect();
+    pod.requireLogin();
+    pod.onLogin(function () {
+        pod.query()
+            .filter( { isLocation: true } )
+            .on('AllResults',displayMap)
+            .start();
+    });
 
     var mapContainer = $( "#mapContainer" );
     if (navigator.geolocation) {
@@ -131,7 +138,7 @@ $(function(){
                 
                 
                 myLocation = {
-                            _id: pod.getUserId()+"/r100", 
+                            //_id: pod.getUserId()+"/r100", 
                             isLocation: true,
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -158,7 +165,7 @@ $(function(){
                     'blue'
                 );
                 myLocation = {
-                            _id: myLocation._id, 
+                           // _id: myLocation._id, 
                             isLocation: true,
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -196,11 +203,6 @@ $(function(){
     panel.style.padding = "1em";
     panel.style.fontFamily = "Arial";
 
-    pod.onLogin(function () {
-        pod.query()
-            .filter( { isLocation:true } )
-            .on('AllResults',displayMap)
-            .start();
-    });
+    
 
 });
