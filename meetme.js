@@ -190,6 +190,7 @@ $(function(){
                 updateMarker(item.latitude,item.longitude,item._owner,'red');
             }
         });
+        alert(markers);
     };
     var panel = document.getElementById("legend");
     document.body.style.backgroundColor = "white";
