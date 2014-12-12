@@ -27,6 +27,10 @@ function HomeControl(controlDiv, map) {
       map.setCenter(markers[marker].getPosition());
       map.setZoom(15);
     });
+
+    google.maps.event.addDomListener(controlUI[marker], 'hover', function() {
+      controlUI[marker].style.backgroundColor="gray";
+    });
   }
 }
 
