@@ -61,7 +61,7 @@ function addMarker( latitude, longitude, label, color ){
        //  draggable: true,
        // raiseOnDrag: true
     });
-    
+
     //if (color!='red'){
       markers[label].setTitle(label);
     //}
@@ -172,6 +172,7 @@ $(function(){
                             when: (new Date()).toISOString()
                           };
                 pod.push(myLocation);
+                console.log("id "+myLocation._id);
             }
         );
         setTimeout(
@@ -184,7 +185,6 @@ $(function(){
     }
     var displayMap = function (items) {
         items.forEach(function(item) {
-            console.log("item"+item)
             var iMeet="";
             if(item._owner==pod.getUserId()){
                 iMeet=item.wantToMeet;
