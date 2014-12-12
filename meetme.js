@@ -198,7 +198,7 @@ $(function(){
     pod.onLogin(function () {
         pod.query()
             .filter( { isLocation:true } )
-            .onAllResults(displayMap)
+            .on('AllResults',displayMap)
             .start();
     });
 
