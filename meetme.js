@@ -5,24 +5,10 @@ var myLocation="";
 var pod="";
 var markers=new Array();
 
-
-/**
- * The HomeControl adds a control to the map that simply
- * returns the user to Chicago. This constructor takes
- * the control DIV as an argument.
- * @constructor
- */
 function HomeControl(controlDiv, map, location) {
 
-  // Set CSS styles for the DIV containing the control
-  // Setting padding to 5 px will offset the control
-  // from the edge of the map
   controlDiv.style.padding = '5px';
 
-  // Set CSS for the control border
-
-
-  // Set CSS for the control interior
   for (var marker in markers){
     var controlUI = document.createElement('div');
     controlUI.id = "ui";
@@ -182,6 +168,14 @@ $(function(){
                 updateMarker(item.latitude,item.longitude,item._owner,'red');
             }
         });
+        var homeControlDiv = document.createElement('div');
+        var homeControl = new HomeControl(homeControlDiv, map, new google.maps.LatLng(
+                               position.coords.latitude,
+                               position.coords.longitude
+                           ));
+
+        homeControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
     };
     // var panel = document.getElementById("legend");
     // document.body.style.backgroundColor = "white";
