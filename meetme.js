@@ -13,28 +13,30 @@ function HomeControl(controlDiv, map) {
   controlDiv.style.padding = '5px';
 
   for (var marker in markers){
-    controlUI[marker] = document.createElement('div');
-    controlUI[marker].className = "ui";
-    controlUI[marker].id="UI"+marker;
-    controlUI[marker].title="Click to zoom";
-    controlDiv.appendChild(controlUI[marker]);
+    if(marker!=null){
+        controlUI[marker] = document.createElement('div');
+        controlUI[marker].className = "ui";
+        controlUI[marker].id="UI"+marker;
+        controlUI[marker].title="Click to zoom";
+        controlDiv.appendChild(controlUI[marker]);
 
-    controlText[marker] = document.createElement('div');
-    controlText[marker].className="text";
-    controlText[marker].id="Text"+marker;
-    controlText[marker].innerHTML = marker;
-    controlUI[marker].appendChild(controlText[marker]);
+        controlText[marker] = document.createElement('div');
+        controlText[marker].className="text";
+        controlText[marker].id="Text"+marker;
+        controlText[marker].innerHTML = marker;
+        controlUI[marker].appendChild(controlText[marker]);
 
-    google.maps.event.addDomListener(document.getElementById("UI"+marker), 'click', function() {
-      map.setCenter(markers[marker].getPosition());
-      map.setZoom(15);
-      console.log(marker+ " click");
-    });
+        google.maps.event.addDomListener(document.getElementById("UI"+marker), 'click', function() {
+          map.setCenter(markers[marker].getPosition());
+          map.setZoom(15);
+          console.log(marker+ " click");
+        });
 
-    google.maps.event.addDomListener(document.getElementById("UI"+marker), 'mouseover', function() {
-      controlUI[marker].style.backgroundColor="gray";
-      console.log(marker+" hover");
-    });
+        google.maps.event.addDomListener(document.getElementById("UI"+marker), 'mouseover', function() {
+          controlUI[marker].style.backgroundColor="gray";
+          console.log(marker+" hover");
+        });
+    }
   }
 }
 
