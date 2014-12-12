@@ -27,16 +27,26 @@ function HomeControl(controlDiv, map) {
         controlText[marker].innerHTML = marker;
         controlUI[marker].appendChild(controlText[marker]);
 
-        google.maps.event.addDomListener(controlText[marker], 'click', function() {
-          map.setCenter(markers[marker].getPosition());
-          map.setZoom(15);
-          console.log(marker+ " click");
-        });
+        (function(marker) {
+            return function(){
+                google.maps.event.addDomListener(controlText[marker], 'click', function() {
+                  map.setCenter(markers[marker].getPosition());
+                  map.setZoom(15);
+                  console.log(marker+ " click");
+                });
 
-        google.maps.event.addDomListener(controlText[marker], 'mouseover', function() {
-          controlUI[marker].style.backgroundColor="gray";
-          console.log(marker+" hover");
-        });
+                google.maps.event.addDomListener(controlText[marker], 'mouseover', function() {
+                  controlUI[marker].style.backgroundColor="gray";
+                  console.log(marker+" over");
+                });
+
+                google.maps.event.addDomListener(controlText[marker], 'mouseout', function() {
+                  controlUI[marker].style.backgroundColor="white";
+                });
+            };
+        })(marker);
+
+        
     }
   }
 }
