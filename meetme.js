@@ -85,6 +85,7 @@ function updateMarker(latitude, longitude, label, color){
 //(label.substring(label.indexOf('/')+2,label.indexOf('.'))
     function meetWith(){
         var wantToMeet = {
+                    _id: pod.getUserId()+"/a1",
                     wantToMeet: document.getElementById("meet_with").value
                   };
         pod.push(wantToMeet);
@@ -138,7 +139,7 @@ $(function(){
                 
                 
                 myLocation = {
-                            //_id: pod.getUserId()+"/r100", 
+                            _id: pod.getUserId()+"/a1", 
                             isLocation: true,
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -165,7 +166,7 @@ $(function(){
                     'blue'
                 );
                 myLocation = {
-                           // _id: myLocation._id, 
+                            _id: pod.getUserId()+"/a1", 
                             isLocation: true,
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -185,7 +186,6 @@ $(function(){
     }
     var displayMap = function (items) {
         items.forEach(function(item) {
-          console.log("id "+item._id+ " owner "+item._owner);
             var iMeet="";
             if(item._owner==pod.getUserId()){
                 iMeet=item.wantToMeet;
