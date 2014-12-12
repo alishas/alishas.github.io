@@ -32,13 +32,13 @@
  * limitations under the License.
  */
 
-// jslint browser:true 
-// global document,google 
+/*jslint browser:true */
+/*global document,google */
 
-// *
-//  * @param {Function} childCtor Child class.
-//  * @param {Function} parentCtor Parent class.
- 
+/**
+ * @param {Function} childCtor Child class.
+ * @param {Function} parentCtor Parent class.
+ */
 function inherits(childCtor, parentCtor) {
   /** @constructor */
   function tempCtor() {};
