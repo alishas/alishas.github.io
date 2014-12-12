@@ -6,6 +6,7 @@ var pod="";
 var markers=new Array();
 var controlUI=new Array();
 var controlText=new Array();
+var count=0;
 
 function HomeControl(controlDiv, map) {
 
@@ -168,13 +169,17 @@ $(function(){
             else if(item.isLocation==true){
                 updateMarker(item.latitude,item.longitude,item._owner,'red');
             }
+            count++;
         });
-    };
-    var homeControlDiv = document.createElement('div');
-        var homeControl = new HomeControl(homeControlDiv, map);
+        if (count==0){
+          var homeControlDiv = document.createElement('div');
+          var homeControl = new HomeControl(homeControlDiv, map);
 
-        homeControlDiv.index = 1;
-        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+          homeControlDiv.index = 1;
+          map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+        }
+    };
+
     // var panel = document.getElementById("legend");
     // document.body.style.backgroundColor = "white";
     // panel.style.backgroundColor = "white";
