@@ -28,7 +28,6 @@ function HomeControl(controlDiv, map) {
         controlUI[marker].appendChild(controlText[marker]);
 
         (function(marker) {
-            return function(){
                 google.maps.event.addDomListener(controlText[marker], 'click', function() {
                   map.setCenter(markers[marker].getPosition());
                   map.setZoom(15);
@@ -43,7 +42,6 @@ function HomeControl(controlDiv, map) {
                 google.maps.event.addDomListener(controlText[marker], 'mouseout', function() {
                   controlUI[marker].style.backgroundColor="white";
                 });
-            };
         })(marker);
 
         
