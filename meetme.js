@@ -4,23 +4,25 @@ var map = "";
 var myLocation="";
 var pod="";
 var markers=new Array();
+var controlUI=new Array();
+var controlText=new Array();
 
 function HomeControl(controlDiv, map) {
 
   controlDiv.style.padding = '5px';
 
   for (var marker in markers){
-    var controlUI = document.createElement('div');
-    controlUI.id = "ui";
-    controlUI.title="Click to zoom"
-    controlDiv.appendChild(controlUI);
+    controlUI[marker] = document.createElement('div');
+    controlUI[marker].id = "ui";
+    controlUI[marker].title="Click to zoom"
+    controlDiv.appendChild(controlUI[marker]);
 
-    var controlText = document.createElement('div');
-    controlText.id="text";
-    controlText.innerHTML = '<b>'+marker+'</b>';
-    controlUI.appendChild(controlText);
+    controlText[marker] = document.createElement('div');
+    controlText[marker].id="text";
+    controlText[marker].innerHTML = marker;
+    controlUI[marker].appendChild(controlText);
 
-    google.maps.event.addDomListener(controlText, 'click', function() {
+    google.maps.event.addDomListener(controlText[marker], 'click', function() {
       map.setCenter(markers[marker].getPosition());
       map.setZoom(15);
     });
