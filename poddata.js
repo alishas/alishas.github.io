@@ -10,7 +10,7 @@ $(function(){
             .on('AllResults',displayResults)
             .start();
     });
-}
+});
 
 var mainDiv = document.createElement('div');
 
