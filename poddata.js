@@ -3,7 +3,7 @@
 $(function(){
     $("#error").html("");  // clear the "Missing Javascript" error message
 
-    pod = crosscloud.connect();
+    var pod = crosscloud.connect();
     pod.requireLogin();
     pod.onLogin(function () {
         pod.query()
