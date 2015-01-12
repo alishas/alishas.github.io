@@ -16,4 +16,4 @@ var mainDiv = document.createElement('div');
 
 var displayResults=function(items){
     mainDiv.innerHTML=items;
-}
+};
