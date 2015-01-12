@@ -15,7 +15,5 @@ $(function(){
 var mainDiv = document.createElement('div');
 
 var displayResults=function(items){
-    items.forEach(function(item) {
-        mainDiv.append(item);
-    });
+    mainDiv.innerHTML=items;
 }
