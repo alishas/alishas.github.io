@@ -14,5 +14,6 @@ $(function(){
 
 
 var displayResults=function(items){
+    console.log(items);
     $("#main").innerHTML=items;
 };
